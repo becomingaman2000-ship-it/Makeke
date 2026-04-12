@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaKeke.Sunnyside — Premium Pastry Marketplace</title>
+  <meta name="description" content="The premium bidding marketplace for luxury pastries and cakes in Zimbabwe.">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gateway.css">
+
+  <!-- Favicon (inline SVG data URI) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="navbar-inner glass">
+    <div class="navbar-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="navbar-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+      <span class="navbar-logo-text text-gradient-gold">
+        MaKeke<span class="dot">.</span><span class="brand">Sunnyside</span>
+      </span>
+    </div>
+    <div id="navbar-user-section" class="navbar-user"></div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     GATEWAY PAGE
+════════════════════════════════════════════════════════════ -->
+<div id="gateway-page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Background orbs -->
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+
+    <!-- Floating pastries -->
+    <div class="hero-floats">
+      <div class="float-item">🎂</div>
+      <div class="float-item">🥐</div>
+      <div class="float-item">🍰</div>
+      <div class="float-item">🧁</div>
+      <div class="float-item">🍬</div>
+    </div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;max-width:800px">
+      <p class="hero-eyebrow">Zimbabwe's Premier Pastry Platform</p>
+
+      <h1 class="hero-title">
+        <span class="text-gradient-gold">MaKeke</span><br>
+        <span class="text-gradient-orange">Sunnyside</span>
+      </h1>
+      <p class="hero-title-sub">Luxury. Crafted. Delivered.</p>
+
+      <p class="hero-description">
+        The premium bidding marketplace for artisanal pastries and cakes.
+        Post your vision. Suppliers compete. You choose the best offer.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn btn-gold btn-xl hero-enter-btn" id="enter-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+          </svg>
+          Enter Marketplace
+        </button>
+        <button class="btn btn-outline-gold btn-xl" id="learn-btn">
+          How It Works
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span class="scroll-hint-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-num text-gradient-gold">2,400+</div>
+      <div class="stat-label">Orders Fulfilled</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num text-gradient-orange">380</div>
+      <div class="stat-label">Verified Suppliers</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num text-gradient-gold">$1.2M</div>
+      <div class="stat-label">Total Bids Placed</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num text-gradient-orange">4.9★</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how-section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:16px">
+        <p style="font-size:11px;color:rgba(212,175,55,0.5);text-transform:uppercase;letter-spacing:.2em;margin-bottom:10px">The Process</p>
+        <h2 class="font-serif font-black" style="font-size:clamp(32px,5vw,52px);letter-spacing:-.02em">
+          How <span class="text-gradient-gold">MaKeke</span> Works
+        </h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.35);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto">
+          Inspired by InDrive's bidding model — but built exclusively for Zimbabwe's luxury pastry scene.
+        </p>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-icon">📝</div>
+          <p class="how-step-num">Step 01</p>
+          <h3 class="how-title">Post Your Request</h3>
+          <p class="how-desc">Describe your dream pastry, upload inspiration photos, and set your starting budget. Takes under 2 minutes.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">⚡</div>
+          <p class="how-step-num">Step 02</p>
+          <h3 class="how-title">Suppliers Bid Instantly</h3>
+          <p class="how-desc">Verified local bakers and pastry chefs see your request in real time and either accept your price or propose a counter-offer.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🤝</div>
+          <p class="how-step-num">Step 03</p>
+          <h3 class="how-title">You Choose & Match</h3>
+          <p class="how-desc">Accept the best bid and get matched instantly. Both parties are notified and the order is locked in.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-icon">🎂</div>
+          <p class="how-step-num">Step 04</p>
+          <h3 class="how-title">Delivered in Luxury</h3>
+          <p class="how-desc">Your bespoke creation is crafted and delivered exactly as specified. Rate your experience to help the community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo text-gradient-gold">MaKeke.Sunnyside</div>
+    <p class="footer-copy">© 2026 MaKeke.Sunnyside · Zimbabwe's Premium Pastry Marketplace</p>
+  </footer>
+
+</div><!-- /gateway-page -->
+
+<!-- ══════════════════════════════════════════════════════════
+     AUTH MODAL
+════════════════════════════════════════════════════════════ -->
+<div id="auth-modal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:440px;padding:40px;position:relative">
+
+    <!-- Header -->
+    <button class="modal-close-btn" onclick="MK.closeModal('auth-modal')">✕</button>
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="font-size:36px;margin-bottom:12px">🎂</div>
+      <h2 class="font-serif font-black" style="font-size:28px;margin-bottom:6px">
+        <span class="text-gradient-gold">Welcome</span>
+      </h2>
+      <p class="text-muted" style="font-size:14px">Sign in or create your MaKeke account</p>
+    </div>
+
+    <!-- Mode toggle -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-mode="login">Sign In</button>
+      <button class="auth-tab" data-mode="register">Register</button>
+    </div>
+
+    <!-- Global error -->
+    <div id="auth-error-global" class="hidden" style="
+      background:rgba(240,149,149,0.08);border:1px solid rgba(240,149,149,0.25);
+      border-radius:10px;padding:10px 14px;font-size:13px;color:#F09595;margin-bottom:16px">
+    </div>
+
+    <form id="auth-form" novalidate>
+
+      <!-- Register-only fields -->
+      <div id="register-fields" class="hidden">
+        <div class="form-field" style="margin-bottom:16px">
+          <label class="field-label">Full name <span class="req">*</span></label>
+          <input class="input" type="text" id="auth-name" placeholder="Your display name" autocomplete="name">
+          <div class="field-error" id="err-auth-name">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+            <span class="err-text">Your name is required.</span>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-bottom:16px">
+          <label class="field-label">I am a… <span class="req">*</span></label>
+          <div class="role-toggle">
+            <button type="button" class="role-btn active" data-role="customer">🛍 Customer<br><small style="font-weight:400;opacity:.7">I want pastries</small></button>
+            <button type="button" class="role-btn" data-role="supplier">🍰 Supplier<br><small style="font-weight:400;opacity:.7">I bake &amp; sell</small></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field" style="margin-bottom:16px">
+        <label class="field-label">Email address <span class="req">*</span></label>
+        <input class="input" type="email" id="auth-email" placeholder="you@example.com" autocomplete="email">
+        <div class="field-error" id="err-auth-email">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          <span class="err-text">Email is required.</span>
+        </div>
+      </div>
+
+      <div class="form-field" style="margin-bottom:24px">
+        <label class="field-label">Password <span class="req">*</span></label>
+        <input class="input" type="password" id="auth-password" placeholder="At least 6 characters" autocomplete="current-password">
+        <div class="field-error" id="err-auth-password">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          <span class="err-text">Password must be at least 6 characters.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-gold" id="auth-submit-btn" style="width:100%;font-size:15px;padding:14px">
+        Sign In
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FIREBASE SDK (compat v9 — loads as globals)
+════════════════════════════════════════════════════════════ -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+<!-- App scripts -->
+<script src="js/firebase-config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+
+<script>
+  // Gateway page logic
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Init auth (updates navbar only on gateway)
+    Auth.init(
+      (user, role) => {
+        // Already signed in — show enter button leading to marketplace
+      },
+      () => {}
+    );
+
+    // Enter button
+    document.getElementById('enter-btn').addEventListener('click', () => {
+      if (Auth.currentUser) {
+        window.location.href = 'marketplace.html';
+      } else {
+        MK.openModal('auth-modal');
+      }
+    });
+
+    // Learn more button
+    document.getElementById('learn-btn').addEventListener('click', () => {
+      document.getElementById('how-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Close auth modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') MK.closeModal('auth-modal');
+    });
+  });
+</script>
+
+</body>
+</html>

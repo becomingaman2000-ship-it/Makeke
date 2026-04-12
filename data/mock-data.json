@@ -1,0 +1,122 @@
+{
+  "requests": [
+    {
+      "id": "mock-001",
+      "pastryType": "Wedding Cake",
+      "startingPrice": 180,
+      "customerName": "Amara Ncube",
+      "customerRating": 4.9,
+      "location": "CBD, Harare",
+      "deadline": "2026-04-19T10:00:00",
+      "description": "White fondant with gold leaf accents, 5 tiers, champagne & vanilla sponge layers. Must include floral sugar toppers. Nut-free environment required. Delivery by 10am.",
+      "servings": 120,
+      "dietaryNotes": "Nut-free · No artificial colourants",
+      "occasionTag": "Wedding",
+      "imageUrl": null,
+      "status": "open",
+      "bids": [],
+      "customerId": "mock-user-001"
+    },
+    {
+      "id": "mock-002",
+      "pastryType": "Croissants",
+      "startingPrice": 65,
+      "customerName": "Tendai Moyo",
+      "customerRating": 4.7,
+      "location": "Borrowdale, Harare",
+      "deadline": "2026-04-16T08:00:00",
+      "description": "Classic French-style butter croissants for a corporate breakfast event. Almond and plain varieties — 12 of each. Must be delivered warm in branded packaging.",
+      "servings": 40,
+      "dietaryNotes": "Contains gluten & dairy · No nuts",
+      "occasionTag": "Corporate",
+      "imageUrl": null,
+      "status": "countered",
+      "bids": [
+        { "supplierName": "Golden Oven Bakery", "amount": 80, "type": "counter" },
+        { "supplierName": "Harare Artisan Co.", "amount": 75, "type": "counter" }
+      ],
+      "latestCounter": 75,
+      "latestCounterBy": "Harare Artisan Co.",
+      "customerId": "mock-user-002"
+    },
+    {
+      "id": "mock-003",
+      "pastryType": "Macarons",
+      "startingPrice": 95,
+      "customerName": "Chiedza Rusike",
+      "customerRating": 5.0,
+      "location": "Avondale, Harare",
+      "deadline": "2026-04-25T14:00:00",
+      "description": "100-piece lavender & honey macaron tower for a 10th anniversary celebration. Pastel purple & gold palette. Vegan shells preferred if possible. Ribbon wrap included.",
+      "servings": 50,
+      "dietaryNotes": "Vegan preferred · Nut-free",
+      "occasionTag": "Anniversary",
+      "imageUrl": null,
+      "status": "open",
+      "bids": [
+        { "supplierName": "Sweet Luxe ZW", "amount": 95, "type": "accept" }
+      ],
+      "customerId": "mock-user-003"
+    },
+    {
+      "id": "mock-004",
+      "pastryType": "Birthday Cake",
+      "startingPrice": 55,
+      "customerName": "Rudo Chakanyuka",
+      "customerRating": 4.6,
+      "location": "Borrowdale Brooke, Harare",
+      "deadline": "2026-04-22T12:00:00",
+      "description": "Two-tier chocolate ganache cake for a 7-year-old's princess birthday party. Pink and purple fondant decorations, edible glitter, and a tiara topper. Allergen: no peanuts.",
+      "servings": 30,
+      "dietaryNotes": "No peanuts",
+      "occasionTag": "Birthday",
+      "imageUrl": null,
+      "status": "open",
+      "bids": [],
+      "customerId": "mock-user-004"
+    },
+    {
+      "id": "mock-005",
+      "pastryType": "Artisan Bread",
+      "startingPrice": 35,
+      "customerName": "Takudzwa Sibanda",
+      "customerRating": 4.8,
+      "location": "Greendale, Harare",
+      "deadline": "2026-04-14T07:30:00",
+      "description": "6 sourdough loaves and 4 seeded rye loaves for a weekend house gathering. Rustic look preferred. No gluten-free substitute needed, standard recipe is fine.",
+      "servings": 20,
+      "dietaryNotes": "None",
+      "occasionTag": "Just Because",
+      "imageUrl": null,
+      "status": "open",
+      "bids": [],
+      "customerId": "mock-user-005"
+    },
+    {
+      "id": "mock-006",
+      "pastryType": "Cupcakes",
+      "startingPrice": 40,
+      "customerName": "Farai Mutasa",
+      "customerRating": 4.5,
+      "location": "Mount Pleasant, Harare",
+      "deadline": "2026-04-30T16:00:00",
+      "description": "24 graduation-themed cupcakes in royal blue and gold. Fondant graduation caps on each. Half vanilla, half red velvet. Boxed individually.",
+      "servings": 24,
+      "dietaryNotes": "Halal",
+      "occasionTag": "Graduation",
+      "imageUrl": null,
+      "status": "open",
+      "bids": [],
+      "customerId": "mock-user-006"
+    }
+  ],
+  "pastryTypes": [
+    "Wedding Cake","Birthday Cake","Artisan Bread","Croissants",
+    "Macarons","Cupcakes","Custom Savory","Cheesecake",
+    "Tarts & Pastries","Donuts","Other"
+  ],
+  "occasionTags": [
+    "Wedding","Birthday","Anniversary","Corporate",
+    "Baby Shower","Graduation","Holiday","Just Because"
+  ]
+}
