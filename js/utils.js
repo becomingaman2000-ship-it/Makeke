@@ -162,3 +162,32 @@ const MK = {
 
 // Make MK global
 window.MK = MK;
+
+
+
+
+
+// --- THE "HEARTBEAT" TEST SCRIPT ---
+import { getDocs, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+async function injectWelcomeCommission() {
+    const commissionsRef = collection(db, "requests");
+    const snapshot = await getDocs(query(commissionsRef, limit(1)));
+
+    // Only inject if the marketplace is totally empty
+    if (snapshot.empty) {
+        console.log("Empty marketplace detected. Injecting elite commission...");
+        await addDoc(commissionsRef, {
+            pastryType: "Tiered Onyx Wedding Cake",
+            description: "A 3-tier chocolate ganache cake with gold leaf detailing. Required for a HIT Gala event. Must serve 50 guests.",
+            currentPrice: 75,
+            minBid: 5,
+            status: "open",
+            createdAt: serverTimestamp(),
+            location: "Harare / HIT Campus"
+        });
+    }
+}
+
+// Start the heartbeat check
+injectWelcomeCommission();
