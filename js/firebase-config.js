@@ -6,12 +6,13 @@
 // ─────────────────────────────────────────────────────────────────
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyDD48u79WVOKYqW-i8YrO67AKWHetDxu-o",
-  authDomain:        "makeke-sunnyside.firebaseapp.com",
-  projectId:         "makeke-sunnyside",
-  storageBucket:     "makeke-sunnyside.firebasestorage.app",
+apiKey: "AIzaSyDD48u79WVOKYqW-i8YrO67AKWHetDxu-o",
+  authDomain: "makeke-sunnyside.firebaseapp.com",
+  projectId: "makeke-sunnyside",
+  storageBucket: "makeke-sunnyside.firebasestorage.app",
   messagingSenderId: "347805172175",
-  appId:             "1:347805172175:web:44334ba5ae2ddc76a8d2ba"
+  appId: "1:347805172175:web:44334ba5ae2ddc76a8d2ba",
+  measurementId: "G-YTY9QMMQM3"
 };
 
 // Initialize Firebase (using compat SDK loaded via CDN)
