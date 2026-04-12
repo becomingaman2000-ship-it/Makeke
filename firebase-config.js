@@ -6,15 +6,16 @@
 // ─────────────────────────────────────────────────────────────────
 
 const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId:             "YOUR_APP_ID"
+  apiKey: "AIzaSyDD48u79WVOKYqW-i8YrO67AKWHetDxu-o",
+  authDomain: "makeke-sunnyside.firebaseapp.com",
+  projectId: "makeke-sunnyside",
+  storageBucket: "makeke-sunnyside.appspot.com", // Changed to standard
+  messagingSenderId: "347805172175",
+  appId: "1:347805172175:web:44334ba5ae2ddc76a8d2ba",
+  measurementId: "G-YTY9QMMQM3"
 };
 
-// Initialize Firebase (using compat SDK loaded via CDN)
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const db      = firebase.firestore();
