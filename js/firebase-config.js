@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────
 
 const firebaseConfig = {
-apiKey: "AIzaSyDD48u79WVOKYqW-i8YrO67AKWHetDxu-o",
+ apiKey: "AIzaSyDD48u79WVOKYqW-i8YrO67AKWHetDxu-o",
   authDomain: "makeke-sunnyside.firebaseapp.com",
   projectId: "makeke-sunnyside",
   storageBucket: "makeke-sunnyside.firebasestorage.app",
