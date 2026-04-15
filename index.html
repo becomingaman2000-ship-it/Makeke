@@ -224,7 +224,15 @@
   // Gateway page logic
   document.addEventListener('DOMContentLoaded', () => {
 
-    // Ensure MK helper is available even if utils.js is slow
+    // 1. ADD THIS: Emergency Bypass Logic
+    const bypassBtn = document.getElementById('emergency-bypass');
+    if (bypassBtn) {
+      bypassBtn.addEventListener('click', () => {
+        window.location.href = './marketplace.html';
+      });
+    }
+
+    // Ensure MK helper is available
     window.MK = window.MK || {
       openModal: (id) => {
         const modal = document.getElementById(id);
@@ -242,21 +250,15 @@
       }
     };
 
-    // Initialize auth logic if available
+    // Initialize auth logic
     if (typeof Auth !== 'undefined') {
-      Auth.init(
-        (user, role) => {
-          // Logic for signed-in users can go here
-        },
-        () => {}
-      );
+      Auth.init((user, role) => {}, () => {});
     }
 
     // Enter Marketplace Button
     const enterBtn = document.getElementById('enter-btn');
     if (enterBtn) {
       enterBtn.addEventListener('click', () => {
-        // Use relative path for GitHub Pages subfolder compatibility
         if (typeof Auth !== 'undefined' && Auth.currentUser) {
           window.location.href = './marketplace.html';
         } else {
@@ -265,23 +267,19 @@
       });
     }
 
-    // How It Works / Learn More Button
+    // How It Works Button
     const learnBtn = document.getElementById('learn-btn');
     if (learnBtn) {
       learnBtn.addEventListener('click', () => {
         const section = document.getElementById('how-section');
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
       });
     }
 
-    // Close auth modal on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') MK.closeModal('auth-modal');
     });
   });
 </script>
-
 </body>
 </html>
