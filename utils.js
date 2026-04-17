@@ -162,3 +162,40 @@ const MK = {
 
 // Make MK global
 window.MK = MK;
+
+
+// js/utils.js — Final safety additions
+
+/**
+ * Global helper to safely access Firestore collections.
+ * Falls back to window.db if available.
+ */
+window.collection = (path) => {
+  if (window.db) return window.db.collection(path);
+  console.error("Firestore 'db' is not initialized yet.");
+  return null;
+};
+
+/**
+ * Injects a welcome commission if the marketplace is empty.
+ * (This matches the function name causing the error in your screenshot)
+ */
+window.injectWelcomeCommission = async () => {
+  if (!window.db) return;
+  try {
+    const ref = db.collection('requests');
+    const snap = await ref.limit(1).get();
+    if (snap.empty) {
+      await ref.add({
+        pastryType: "Welcome Cake",
+        customerName: "MaKeke Team",
+        description: "Welcome to the marketplace! This is a sample request.",
+        startingPrice: 50,
+        status: "open",
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+  } catch (e) {
+    console.warn("Welcome commission skip:", e);
+  }
+};
