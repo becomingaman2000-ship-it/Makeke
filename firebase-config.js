@@ -22,6 +22,13 @@ const db      = firebase.firestore();
 const auth    = firebase.auth();
 const storage = firebase.storage();
 
+
+window.db = db;
+window.auth = auth;
+window.storage = storage;
+
+window.collection = (path) => db.collection(path);
+
 // Enable Firestore offline persistence
 db.enablePersistence().catch(err => {
   if (err.code === 'failed-precondition') {
