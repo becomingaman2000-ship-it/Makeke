@@ -66,7 +66,7 @@ const Marketplace = {
 };
 
 
-// js/marketplace.js — PART 2: Data & Filters
+// js/marketplace.js — PART 2: Data & Search
 
 Marketplace.startListener = function(user, role) {
   if (Marketplace.unsubscribeListener) Marketplace.unsubscribeListener();
@@ -79,37 +79,36 @@ Marketplace.startListener = function(user, role) {
     query = query.where('status', 'in', ['open', 'countered']).limit(100);
   }
 
-  Marketplace.unsubscribeListener = query.onSnapshot(
-    (snapshot) => {
-      Marketplace.requests = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      Marketplace.renderCards();
-      Marketplace.updateSubtitle();
-    },
-    (err) => console.error('Firestore Error:', err)
-  );
+  Marketplace.unsubscribeListener = query.onSnapshot((snapshot) => {
+    Marketplace.requests = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    Marketplace.renderCards();
+    Marketplace.updateSubtitle();
+  });
 };
 
 Marketplace.filteredRequests = function() {
   const statusMap = { 'open-bid': 'open', 'countered': 'countered', 'matched': 'matched' };
-
   return Marketplace.requests.filter(req => {
     const isAll = Marketplace.activeFilter === 'all';
     const statusMatch = isAll || req.status === statusMap[Marketplace.activeFilter];
     const query = Marketplace.searchQuery.toLowerCase().trim();
-    const searchMatch = !query || 
-      (req.pastryType || '').toLowerCase().includes(query) ||
-      (req.location || '').toLowerCase().includes(query);
-
+    const searchMatch = !query || (req.pastryType || '').toLowerCase().includes(query);
     return statusMatch && searchMatch;
   });
 };
 
+Marketplace.setupControls = function() {
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      Marketplace.searchQuery = e.target.value;
+      Marketplace.renderCards();
+    });
+  }
+};
 
 
-// js/marketplace.js — PART 3: UI & Actions
+// js/marketplace.js — PART 3: Rendering
 
 Marketplace.renderCards = function() {
   const container = document.getElementById('cards-container');
@@ -125,34 +124,59 @@ Marketplace.renderCards = function() {
   Marketplace.attachCardListeners(container);
 };
 
+Marketplace.cardHTML = function(req, delay) {
+  const { id, pastryType, startingPrice, customerName, status, location } = req;
+  const price = parseFloat(startingPrice || 0);
+  const formattedPrice = typeof MK !== 'undefined' ? MK.formatPrice(price) : `$${price}`;
+
+  return `
+    <div class="bidding-card" data-id="${id}" style="animation-delay:${delay}ms">
+      <div class="card-body">
+        <div class="card-customer-row">${customerName || 'Client'}</div>
+        <div class="card-pastry-title">${pastryType}</div>
+        <div class="card-meta-row">${location || 'Harare'}</div>
+        <div class="card-price-row">
+          <div class="price-amount">${formattedPrice}</div>
+        </div>
+        ${Marketplace.role === 'supplier' ? Marketplace.supplierActionsHTML(id, price) : ''}
+      </div>
+    </div>`;
+};
+
+
+// js/marketplace.js — PART 4: Actions & Boot
+
 Marketplace.handleAccept = async function(reqId, price) {
-  // Use mock ID if real auth is skipped
-  const user = Auth.currentUser || { uid: "dev-user-123", displayName: "HIT Admin" };
-  
+  const user = Auth.currentUser || { uid: "dev-user-123" };
   try {
     const batch = db.batch();
     const bidRef = db.collection('bids').doc();
     const reqRef = db.collection('requests').doc(reqId);
 
-    batch.set(bidRef, {
-      requestId: reqId,
-      supplierId: user.uid,
-      amount: parseFloat(price),
-      type: 'accept',
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-
-    batch.update(reqRef, {
-      status: 'matched',
-      matchedSupplierId: user.uid,
-      matchedPrice: parseFloat(price)
-    });
+    batch.set(bidRef, { requestId: reqId, supplierId: user.uid, amount: parseFloat(price), type: 'accept', createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+    batch.update(reqRef, { status: 'matched', matchedSupplierId: user.uid });
 
     await batch.commit();
-    MK.toast('Matched! Order is yours.', 'success');
-  } catch (err) {
-    MK.toast('Action failed.', 'error');
-  }
+    MK.toast('Order Accepted!', 'success');
+  } catch (err) { console.error(err); }
 };
 
-// ... include the rest of your helper functions (cardHTML, emptyStateHTML, etc.)
+Marketplace.supplierActionsHTML = function(id, price) {
+  return `
+    <div class="card-actions">
+      <button class="card-btn-accept" onclick="Marketplace.handleAccept('${id}', ${price})">Accept</button>
+    </div>`;
+};
+
+Marketplace.emptyStateHTML = function() {
+  return `<div class="empty-state">No requests found right now.</div>`;
+};
+
+// --- BOOT THE APP ---
+window.Marketplace = Marketplace;
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('marketplace-page')) { Marketplace.init(); }
+});
+
+
+
